@@ -166,9 +166,9 @@ for files in os.listdir(document_path):
         word_count = {}
         for line in file:
             after_punctuation = re.sub('[^\w\s]', '', line.strip().lower()).split()
-            stemmed = [stemmer.stem(str(word)) for word in after_punctuation]
-            new_line = [str(x) for x in stemmed if str(x) not in stop_words]
-            for word in new_line:
+            new_line = [str(x) for x in after_punctuation if str(x) not in stop_words]
+            stemmed = [stemmer.stem(str(word)) for word in new_line]
+            for word in stemmed:
                 if word in word_count:
                     word_count[word] += 1
                 else:
