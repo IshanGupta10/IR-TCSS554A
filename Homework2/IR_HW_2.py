@@ -60,10 +60,10 @@ def generate_original_rank_vector(graph):
 # follows the equation given in the
 # PageRank presentation.
 ##################################
-def generate_A_matrix(graph, m_matrix, damp_factor):
+def generate_A_matrix(graph, m_matrix, beta):
 
-    teleport_factor = (1 - damp_factor) / len(graph) # this is leap propbability
-    a_matrix = damp_factor * m_matrix + teleport_factor
+    teleport_factor = (1 - beta) / len(graph) # this is leap propbability
+    a_matrix = beta * m_matrix + teleport_factor
 
     return a_matrix
 
@@ -90,18 +90,18 @@ def power_converge_m_matrix(rank_vector, m_matrix):
 ##################################
 # power iteration method for A
 # matrix using equation -
-# r(t+1) = Sigma(damp_factor * M Matrix * r(t) + leap_probability)
+# r(t+1) = Sigma(beta * M Matrix * r(t) + leap_probability)
 ##################################
-def power_converge_a_matrix(graph, rank_vector, m_matrix, damp_factor):
+def power_converge_a_matrix(graph, rank_vector, m_matrix, beta):
     power = 0
     rank_vector_t = rank_vector
     rank_vector_t_plus_1 = np.empty(shape=(len(rank_vector), 1))
     rank_vector_t_plus_1.fill(0)
-    teleport_factor = (1 - damp_factor) / len(graph) # this is leap propbability
+    teleport_factor = (1 - beta) / len(graph) # this is leap propbability
 
     while not np.allclose(rank_vector_t, rank_vector_t_plus_1, rtol=1e-06, atol=1e-06):
         rank_vector_t = rank_vector
-        rank_vector_t_plus_1 = damp_factor * m_matrix * rank_vector_t + teleport_factor
+        rank_vector_t_plus_1 = beta * m_matrix * rank_vector_t + teleport_factor
         rank_vector = rank_vector_t_plus_1
         power += 1
 
@@ -112,10 +112,10 @@ if __name__ == '__main__':
     graph = generate_adjacency_list()
     m_matrix = generate_m_matrix(graph)
     rank_vector = generate_original_rank_vector(graph)
-    damp_factor = 0.85
-    a_matrix = generate_A_matrix(graph, m_matrix, damp_factor)
+    beta = 0.85
+    a_matrix = generate_A_matrix(graph, m_matrix, beta)
     m_iterations, final_rank_vector_m = power_converge_m_matrix(rank_vector, m_matrix)
-    a_iterations, final_rank_vector_a = power_converge_a_matrix(graph, rank_vector, m_matrix, damp_factor)
+    a_iterations, final_rank_vector_a = power_converge_a_matrix(graph, rank_vector, m_matrix, beta)
     print ('Iterations M : ', m_iterations)
     print ('Iterations A : ', a_iterations)
     print ('Original Rank Vector : ')
