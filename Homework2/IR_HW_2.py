@@ -28,7 +28,7 @@ def generate_adjacency_list():
 # list
 ##################################
 def generate_m_matrix(graph):
-    df = pd.DataFrame(columns=graph.keys(), index=graph.keys(), dtype="double")
+    df = pd.DataFrame(columns=graph.keys(), index=graph.keys())
     df = df.fillna(0.0)
 
     for key, val in graph.items():
