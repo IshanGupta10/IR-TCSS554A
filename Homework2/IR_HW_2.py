@@ -62,7 +62,7 @@ def generate_original_rank_vector(graph):
 ##################################
 def generate_A_matrix(graph, m_matrix, beta):
 
-    teleport_factor = (1 - beta) / len(graph) # this is leap propbability
+    teleport_factor = (1 - beta) / len(graph) # this is teleport propbability
     a_matrix = beta * m_matrix + teleport_factor
 
     return a_matrix
@@ -90,14 +90,14 @@ def power_converge_m_matrix(rank_vector, m_matrix):
 ##################################
 # power iteration method for A
 # matrix using equation -
-# r(t+1) = Sigma(beta * M Matrix * r(t) + leap_probability)
+# r(t+1) = Sigma(beta * M Matrix * r(t) + ((1-beta)/(total_nodes)))
 ##################################
 def power_converge_a_matrix(graph, rank_vector, m_matrix, beta):
     power = 0
     rank_vector_t = rank_vector
     rank_vector_t_plus_1 = np.empty(shape=(len(rank_vector), 1))
     rank_vector_t_plus_1.fill(0)
-    teleport_factor = (1 - beta) / len(graph) # this is leap propbability
+    teleport_factor = (1 - beta) / len(graph) # this is teleport propbability
 
     while not np.allclose(rank_vector_t, rank_vector_t_plus_1, rtol=1e-06, atol=1e-06):
         rank_vector_t = rank_vector
