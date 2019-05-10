@@ -32,4 +32,4 @@ For this assignment, I've considered following equations for M and A matrices -
 
 M : r(t+1) = M*R(t) PageRank presentation, Page 37
 
-A : r(t+1) = Sigma(damp_factor * M Matrix * r(t) + leap_probability) PageRank equation [Brin-Page, 98] PageRank presentation, Page 43
+A : r(t+1) = Sigma(damp_factor * M Matrix * r(t) + r(t+1) = Sigma(beta * M Matrix * r(t) + ((1-beta)/(total_nodes)))) PageRank equation [Brin-Page, 98] PageRank presentation, Page 43
