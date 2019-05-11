@@ -1,4 +1,19 @@
----- Python Code -----
+---- Python Code Compact-----
+
+
+For this assignment, download the graph.txt and ir_hw_2_scale.py files.
+You'll require python 3.7+ installed in your system, and will require pandas and numpy modules.
+
+To run the file, goto the downloaded folder of python file via terminal and run - 
+
+python3 ir_hw_2_scale.py --file_path path_of_the_graph.txt_file --beta value_of_beta
+
+Sample run command on a MacOS/Linux system - 
+
+python3 ir_hw_2_scale.py --file_path ./graph.txt --beta 0.85
+
+
+---- Python Code Normal-----
 
 For this assignment, download the graph.txt and IR_HW_2.py files, and place them in a same folder.
 
@@ -11,6 +26,7 @@ python3 IR_HW_2.py
 -------------------------------------------------------------------------------
 
 ---- C++ Code -----
+
 
 For this assignment, download the graph.txt and ir_hw_2.cpp files, and place them in a same folder.
 
@@ -28,6 +44,7 @@ decimal comparisons the code cannot check decimal absolute comparisons and hence
 computations in its convergence of two rank vectors or M and A respectively.
 
 -------------------------------------------------------------------------------
+
 For this assignment, I've considered following equations for M and A matrices -
 
 M : r(t+1) = M*R(t) PageRank presentation, Page 37
